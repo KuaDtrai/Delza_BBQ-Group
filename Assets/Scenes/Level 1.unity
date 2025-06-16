@@ -20798,7 +20798,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 8
-      m_TileSpriteIndex: 8
+      m_TileSpriteIndex: 13
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -21208,7 +21208,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 4
-      m_TileSpriteIndex: 4
+      m_TileSpriteIndex: 8
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -21397,8 +21397,8 @@ Tilemap:
     m_Data: {fileID: 21300012, guid: 9f8f114589864b6489859a58fbb6baf9, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: 21300006, guid: 9f8f114589864b6489859a58fbb6baf9, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 1243719410, guid: dda6bbdb704d84847b38f9eced72bf59, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: 662571981, guid: 29c9cded5e558164aaf8c9bf08aa1510, type: 3}
   - m_RefCount: 4
@@ -21406,7 +21406,7 @@ Tilemap:
   - m_RefCount: 4
     m_Data: {fileID: 21300018, guid: 9f8f114589864b6489859a58fbb6baf9, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: -1817467914, guid: dda6bbdb704d84847b38f9eced72bf59, type: 3}
+    m_Data: {fileID: 1243719410, guid: dda6bbdb704d84847b38f9eced72bf59, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 788498891, guid: dda6bbdb704d84847b38f9eced72bf59, type: 3}
   - m_RefCount: 3
@@ -21415,8 +21415,8 @@ Tilemap:
     m_Data: {fileID: 1702944619, guid: 7dac43cb2fb46a34d88e488dbe4b6aae, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 1338680504, guid: 7dac43cb2fb46a34d88e488dbe4b6aae, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -1817467914, guid: dda6bbdb704d84847b38f9eced72bf59, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -1775273686, guid: 7dac43cb2fb46a34d88e488dbe4b6aae, type: 3}
   - m_RefCount: 1
@@ -21531,6 +21531,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8413529789942519730, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942925490989933264, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
+      propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
