@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Animation/Player.meta
 guid: 096a9887a976eb044a905f3111c0db7f
+========
+guid: a00fa9d9c2c144848a834a8f4f502174
+>>>>>>>> main:Assets/Libs.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
