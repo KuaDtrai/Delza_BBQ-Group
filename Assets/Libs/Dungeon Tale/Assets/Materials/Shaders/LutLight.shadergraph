@@ -904,7 +904,6 @@
     "m_OutputNode": {
         "m_Id": ""
     },
-    "m_SubDatas": [],
     "m_ActiveTargets": [
         {
             "m_Id": "133a534781c641f09803a8829ff88f47"
@@ -1091,7 +1090,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "",
+        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -1132,9 +1131,6 @@
     "m_AlphaClip": false,
     "m_CastShadows": true,
     "m_ReceiveShadows": true,
-    "m_DisableTint": false,
-    "m_AdditionalMotionVectorMode": 0,
-    "m_AlembicMotionVectors": false,
     "m_SupportsLODCrossFade": false,
     "m_CustomEditorGUI": "",
     "m_SupportVFX": false
@@ -1252,7 +1248,6 @@
     "m_SourceType": 0,
     "m_FunctionName": "lut_pix",
     "m_FunctionSource": "121bb24c7bc9f7642b136678923e7a17",
-    "m_FunctionSourceUsePragmas": true,
     "m_FunctionBody": "Enter function body here..."
 }
 
@@ -1268,7 +1263,7 @@
     "m_StageCapability": 3,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "",
+        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -1286,7 +1281,7 @@
     "m_StageCapability": 3,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "",
+        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -1542,8 +1537,8 @@
     "m_ObjectId": "340996a9b62348b9bc0f64eced5bb157",
     "m_Title": "Sample the Light Texture (Urp 2D)",
     "m_Position": {
-        "x": -1647.199951171875,
-        "y": 268.8000183105469
+        "x": -1646.509765625,
+        "y": 269.9999084472656
     }
 }
 
@@ -1833,7 +1828,6 @@
     "m_SourceType": 0,
     "m_FunctionName": "uv_snap",
     "m_FunctionSource": "121bb24c7bc9f7642b136678923e7a17",
-    "m_FunctionSourceUsePragmas": true,
     "m_FunctionBody": "Enter function body here..."
 }
 
@@ -2024,7 +2018,6 @@
     "m_SourceType": 0,
     "m_FunctionName": "avg",
     "m_FunctionSource": "121bb24c7bc9f7642b136678923e7a17",
-    "m_FunctionSourceUsePragmas": true,
     "m_FunctionBody": "Enter function body here..."
 }
 
@@ -3063,7 +3056,6 @@
     "m_SourceType": 0,
     "m_FunctionName": "lum",
     "m_FunctionSource": "121bb24c7bc9f7642b136678923e7a17",
-    "m_FunctionSourceUsePragmas": true,
     "m_FunctionBody": "Enter function body here..."
 }
 
@@ -3825,7 +3817,6 @@
     "m_SourceType": 0,
     "m_FunctionName": "max",
     "m_FunctionSource": "121bb24c7bc9f7642b136678923e7a17",
-    "m_FunctionSourceUsePragmas": true,
     "m_FunctionBody": "Enter function body here..."
 }
 
@@ -3850,7 +3841,7 @@
     "hlslDeclarationOverride": 2,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "",
+        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -4237,7 +4228,6 @@
     "m_SourceType": 0,
     "m_FunctionName": "lut_pix_smooth",
     "m_FunctionSource": "121bb24c7bc9f7642b136678923e7a17",
-    "m_FunctionSourceUsePragmas": true,
     "m_FunctionBody": "Enter function body here..."
 }
 
@@ -4791,7 +4781,6 @@
     "m_SourceType": 0,
     "m_FunctionName": "uv_screen",
     "m_FunctionSource": "121bb24c7bc9f7642b136678923e7a17",
-    "m_FunctionSourceUsePragmas": true,
     "m_FunctionBody": "Enter function body here..."
 }
 
