@@ -19209,13 +19209,22 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 04ee9d2318dfaf14ab0cd7cbfcba56d2, type: 3}
       insertIndex: -1
+<<<<<<< Updated upstream
       addedObject: {fileID: 2117447860}
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 04ee9d2318dfaf14ab0cd7cbfcba56d2, type: 3}
       insertIndex: -1
+=======
+>>>>>>> Stashed changes
       addedObject: {fileID: 2117447862}
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 04ee9d2318dfaf14ab0cd7cbfcba56d2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2117447865}
+<<<<<<< Updated upstream
+=======
+    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 04ee9d2318dfaf14ab0cd7cbfcba56d2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2117447868}
+>>>>>>> Stashed changes
   m_SourcePrefab: {fileID: -8435245712485981826, guid: 04ee9d2318dfaf14ab0cd7cbfcba56d2, type: 3}
 --- !u!1 &1099188240
 GameObject:
@@ -22144,14 +22153,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: 04ee9d2318dfaf14ab0cd7cbfcba56d2, type: 3}
   m_PrefabInstance: {fileID: 885982985}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
 --- !u!114 &2117447860
 MonoBehaviour:
+=======
+--- !u!61 &2117447862
+BoxCollider2D:
+>>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2117447856}
   m_Enabled: 1
+<<<<<<< Updated upstream
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7a8ea75f4391144b85b1a0d32645230, type: 3}
   m_Name: 
@@ -22160,11 +22175,55 @@ MonoBehaviour:
   knockbackDuration: 0.5
 --- !u!61 &2117447862
 BoxCollider2D:
+=======
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.0625, y: 0.5625}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5625, y: 0}
+    oldSize: {x: 1, y: 1.125}
+    newSize: {x: 1, y: 1.125}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1.125}
+  m_EdgeRadius: 0
+--- !u!50 &2117447865
+Rigidbody2D:
+  serializedVersion: 5
+>>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2117447856}
+<<<<<<< Updated upstream
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -22231,6 +22290,41 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+=======
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &2117447868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117447856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7a8ea75f4391144b85b1a0d32645230, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockbackForce: 10
+  knockbackDuration: 0.5
+>>>>>>> Stashed changes
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
