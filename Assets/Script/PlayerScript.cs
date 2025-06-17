@@ -54,14 +54,14 @@ public class PlayerScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("DIAMOND"))
-        {
-            Destroy(collision.gameObject);
-        }
-        else if (collision.gameObject.CompareTag("TAKEDAMAGE"))
-        {
-            Health--;
-        }
+        //if (collision.gameObject.CompareTag("DIAMOND"))
+        //{
+        //    Destroy(collision.gameObject);
+        //}
+        //else if (collision.gameObject.CompareTag("TAKEDAMAGE"))
+        //{
+        //    Health--;
+        //}
     }
 
 }
