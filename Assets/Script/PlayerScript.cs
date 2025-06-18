@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    float movementSpeed = 6.0f;
+    float movementSpeed = 6.0f; //speed
     float normalSpeed = 6.0f; // Normal movement speed
     float sprintSpeed = 10.0f; // Sprint speed when Shift is held
     float x, y, z;
     int Health = 3;
     Vector3 tempPos = new Vector3(0, 0, 0);
     Rigidbody2D rb; // Reference to the Rigidbody2D component
-    [SerializeField] float knockbackForce = 10f; // Adjustable knockback force in the Inspector
-    [SerializeField] float knockbackDuration = 0.5f; // Duration of the knockback effect
+    //[SerializeField] float knockbackForce = 10f; // Adjustable knockback force in the Inspector
+    //[SerializeField] float knockbackDuration = 0.5f; // Duration of the knockback effect
 
     void Start()
     {
