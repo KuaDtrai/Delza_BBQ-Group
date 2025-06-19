@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: 40979cee86b61a24aa31e744ca9bf909
+guid: 9c75e5f0ebbe7f94b821ff83c238b0fb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4944230376442633554
-    second: Run_0
+      213: -4795363162621231457
+    second: Flight_0
   - first:
-      213: -2274363484027164459
-    second: Run_1
+      213: -3652676412848291748
+    second: Flight_1
   - first:
-      213: 8284087734974297348
-    second: Run_2
+      213: -596950462376016933
+    second: Flight_2
   - first:
-      213: 5304202850863732263
-    second: Run_3
+      213: -4538786591655478766
+    second: Flight_3
   - first:
-      213: 2833043080597125133
-    second: Run_4
+      213: 8639066506597270619
+    second: Flight_4
   - first:
-      213: -2217414122262695004
-    second: Run_5
+      213: -4262185617143388622
+    second: Flight_5
   - first:
-      213: -4440497016933152808
-    second: Run_6
+      213: 5066340549283584134
+    second: Flight_6
   - first:
-      213: 8676454946275842879
-    second: Run_7
+      213: 7784096630628774620
+    second: Flight_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,7 +96,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -160,7 +160,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Run_0
+      name: Flight_0
       rect:
         serializedVersion: 2
         x: 0
@@ -175,14 +175,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5982788047191ba4ca6dbbe965f1e996
-      internalID: 4944230376442633554
+      spriteID: 4b60f3b428266f641882fff33b3d5e5a
+      internalID: -4795363162621231457
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_1
+      name: Flight_1
       rect:
         serializedVersion: 2
         x: 150
@@ -197,14 +197,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5bcdd855188c3774a803266ded00b576
-      internalID: -2274363484027164459
+      spriteID: 10226d6044353eb4fa948bd574ea736f
+      internalID: -3652676412848291748
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_2
+      name: Flight_2
       rect:
         serializedVersion: 2
         x: 300
@@ -219,14 +219,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dcf37240b781e274d98eefcb9f7fcba4
-      internalID: 8284087734974297348
+      spriteID: 0ad4b872376ed3e4486247ba89b9be8d
+      internalID: -596950462376016933
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_3
+      name: Flight_3
       rect:
         serializedVersion: 2
         x: 450
@@ -241,14 +241,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84deed21fe54da2409e70bdf02df88de
-      internalID: 5304202850863732263
+      spriteID: 6175273388504464690a5ffdb4b6e945
+      internalID: -4538786591655478766
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_4
+      name: Flight_4
       rect:
         serializedVersion: 2
         x: 600
@@ -263,14 +263,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 964c24613382beb488044551787b1400
-      internalID: 2833043080597125133
+      spriteID: 2b82a24c2d9256047b65475093a49a14
+      internalID: 8639066506597270619
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_5
+      name: Flight_5
       rect:
         serializedVersion: 2
         x: 750
@@ -285,14 +285,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29a89c1cd2717914083a4caabf8cbca9
-      internalID: -2217414122262695004
+      spriteID: b03cc7e3212354449903d7c9f940e356
+      internalID: -4262185617143388622
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_6
+      name: Flight_6
       rect:
         serializedVersion: 2
         x: 900
@@ -307,14 +307,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e7991ecfab815e439aa9a3a81659d1b
-      internalID: -4440497016933152808
+      spriteID: 9d78b014b5797f54bb5585f62835f8ab
+      internalID: 5066340549283584134
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_7
+      name: Flight_7
       rect:
         serializedVersion: 2
         x: 1050
@@ -329,8 +329,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05aa15e0bfdaaeb478a499c3fb97a469
-      internalID: 8676454946275842879
+      spriteID: 33f8db84057f2e143a48f74752555df2
+      internalID: 7784096630628774620
       vertices: []
       indices: 
       edges: []
@@ -349,14 +349,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Run_0: 4944230376442633554
-      Run_1: -2274363484027164459
-      Run_2: 8284087734974297348
-      Run_3: 5304202850863732263
-      Run_4: 2833043080597125133
-      Run_5: -2217414122262695004
-      Run_6: -4440497016933152808
-      Run_7: 8676454946275842879
+      Flight_0: -4795363162621231457
+      Flight_1: -3652676412848291748
+      Flight_2: -596950462376016933
+      Flight_3: -4538786591655478766
+      Flight_4: 8639066506597270619
+      Flight_5: -4262185617143388622
+      Flight_6: 5066340549283584134
+      Flight_7: 7784096630628774620
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
