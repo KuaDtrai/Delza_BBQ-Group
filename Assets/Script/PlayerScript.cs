@@ -1,7 +1,8 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerScript : MonoBehaviour
-{
+{   
     float movementSpeed = 6.0f; //speed
     float normalSpeed = 6.0f; // Normal movement speed
     float sprintSpeed = 10.0f; // Sprint speed when Shift is held
@@ -19,7 +20,7 @@ public class PlayerScript : MonoBehaviour
     }
 
     void Update()
-    {
+    {        
         // Check if Shift key is held down
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
@@ -48,7 +49,7 @@ public class PlayerScript : MonoBehaviour
 
         if (Health <= 0)
         {
-            Destroy(this.gameObject);
+            Destroy(this.gameObject);           
         }
     }
 

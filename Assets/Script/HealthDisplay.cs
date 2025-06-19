@@ -8,7 +8,7 @@ public class HealthDisplay : MonoBehaviour
 
     //public Sprite deathSnail;
     //public Sprite aliveSnail;
-    public Image[] snails;
+    public Image[] hero;
 
     public PlayerHealth playerHealth;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -24,7 +24,7 @@ public class HealthDisplay : MonoBehaviour
         health = playerHealth.health;
         maxHealth = playerHealth.maxHealth;
 
-        for (int i = 0; i < snails.Length; i++)
+        for (int i = 0; i < hero.Length; i++)
         {
             //if(i<health)
             //{
@@ -36,11 +36,11 @@ public class HealthDisplay : MonoBehaviour
             //}
             if (i < health)
             {
-                snails[i].enabled = true;
+                hero[i].enabled = true;
             }
             else
             {
-                snails[i].enabled = false;
+                hero[i].enabled = false;
             }
         }
     }

@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 5;
     public GameObject object1;
     public GameObject object2;
-    private bool isDead = false;
+    public bool isDead = false;
 
     public SpriteRenderer spriteRenderer;
 
@@ -25,23 +25,22 @@ public class PlayerHealth : MonoBehaviour
         health -= damage;
         if (health <= 0 && !isDead)
         {
-            isDead = true;
+            isDead = true;           
             await Task.Delay(1);
             Destroy(object1);
             await Task.Delay(100);
+            Death();            
         }
     }
 
-    public Boolean Death(bool dead)
-    {
-        dead = false;
+
+    public void Death()
+    {        
         if (isDead)
         {
-            Instantiate(object2);
-            dead = true;
-            //manager.GameOver();
-        }
-        return dead;
+            print("You lose");
+           manager.GameOver();
+        }       
     }
 
     public void HealHealth(int heal)
