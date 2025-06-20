@@ -12,11 +12,11 @@ public class SkeletonDamage : MonoBehaviour
     float agroRange;
 
     [SerializeField]
-    float moveSpeed;
+    public float moveSpeed;
 
     Rigidbody2D rb;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -25,11 +25,11 @@ public class SkeletonDamage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player != null)
+        if (player != null)
         {
-            //distance
-            float distToPlayer = Vector2.Distance(transform.position, player.transform.position);
-            Vector2 direction = player.transform.position - transform.position;
+            // Calculate distance to player
+            float distToPlayer = Vector2.Distance(transform.position, player.position);
+            Vector2 direction = player.position - transform.position;
             direction.Normalize();
 
             if (distToPlayer < agroRange)
@@ -38,22 +38,25 @@ public class SkeletonDamage : MonoBehaviour
             }
             else
             {
-                //StopChase();
+                StopChase();
             }
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
-            playerHealth.TakeDamage(damage);
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(damage);
+            }
         }
     }
 
     public void Chase()
-    {        
-        transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, moveSpeed * Time.deltaTime);
+    {
+        transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
         if (transform.position.x < player.position.x)
         {
             transform.localScale = new Vector3(3, 3, 3);
@@ -65,7 +68,7 @@ public class SkeletonDamage : MonoBehaviour
     }
 
     public void StopChase()
-    {        
-            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, 0);      
+    {
+        transform.position = Vector2.MoveTowards(transform.position, player.position, 0);
     }
 }
