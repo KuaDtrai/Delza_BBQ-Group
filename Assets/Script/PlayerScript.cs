@@ -1,33 +1,30 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
     float movementSpeed = 6.0f;
-    float normalSpeed = 6.0f; // Normal movement speed
-    float sprintSpeed = 10.0f; // Sprint speed when Shift is held
+    float normalSpeed = 6.0f;
+    float sprintSpeed = 10.0f;
     float x, y, z;
-    int Health = 3;
+    public int Health = 3;
     Vector3 tempPos = new Vector3(0, 0, 0);
-    Rigidbody2D rb; // Reference to the Rigidbody2D component
-    [SerializeField] float knockbackForce = 10f; // Adjustable knockback force in the Inspector
-    [SerializeField] float knockbackDuration = 0.5f; // Duration of the knockback effect
+    Rigidbody2D rb;
 
     void Start()
     {
-        // Get the Rigidbody2D component attached to the player
-        rb = GetComponent<Rigidbody2D>();
+        //rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        // Check if Shift key is held down
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
-            movementSpeed = sprintSpeed; // Increase speed when Shift is held
+            movementSpeed = sprintSpeed;
         }
         else
         {
-            movementSpeed = normalSpeed; // Revert to normal speed when Shift is released
+            movementSpeed = normalSpeed;
         }
 
         x = Input.GetAxis("Horizontal");
@@ -36,32 +33,39 @@ public class PlayerScript : MonoBehaviour
 
         transform.Translate(tempPos * movementSpeed * Time.deltaTime);
 
-        // Flip sprite on X-axis when moving left
-        if (x < 0) // Moving left
+        if (x < 0)
         {
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
-        else if (x > 0) // Moving right
+        else if (x > 0)
         {
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
 
         if (Health <= 0)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        //if (collision.gameObject.CompareTag("DIAMOND"))
-        //{
-        //    Destroy(collision.gameObject);
-        //}
-        //else if (collision.gameObject.CompareTag("TAKEDAMAGE"))
-        //{
-        //    Health--;
-        //}
+        if (collision.gameObject.CompareTag("DIAMOND"))
+        {
+            Destroy(collision.gameObject);
+        }
+        else if (collision.gameObject.CompareTag("TELEPORT"))
+        {
+            // Check if current scene is "Level 1"
+            if (SceneManager.GetActiveScene().name == "Village")
+            {
+                SceneManager.LoadScene("Level 1");
+            }
+            else if (SceneManager.GetActiveScene().name == "Level 1")
+                SceneManager.LoadScene("Level 2");
+            else if (SceneManager.GetActiveScene().name == "Level 2")
+                SceneManager.LoadScene("Level 3");
+            else SceneManager.LoadScene("Village");
+        }
     }
-
 }
