@@ -1,18 +1,18 @@
 using UnityEngine;
 
-public class SkeletonDamage : MonoBehaviour
+public class BringerOfDeathDamage : MonoBehaviour
 {
     public PlayerHealth playerHealth;
-    public int damage = 1;
+    public int damage = 2;
 
     [SerializeField]
     Transform player;
 
     [SerializeField]
-    float agroRange;
+    float agroRange = 6;
 
     [SerializeField]
-    public float moveSpeed;
+    public float moveSpeed = 5;
 
     Rigidbody2D rb;
 
@@ -62,11 +62,11 @@ public class SkeletonDamage : MonoBehaviour
         animator.SetBool("isChasing", true);
         if (transform.position.x < player.position.x)
         {
-            transform.localScale = new Vector3(3, 3, 3);
+            transform.localScale = new Vector3(-4, 4, 4);
         }
         else
         {
-            transform.localScale = new Vector3(-3, 3, 3);
+            transform.localScale = new Vector3(4, 4, 4);
         }
     }
 
