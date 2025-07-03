@@ -7,7 +7,7 @@ public class PlayerScript : MonoBehaviour
     float normalSpeed = 6.0f;
     float sprintSpeed = 10.0f;
     float x, y, z;
-    public int Health = 3;
+    public int Health = 3;    
     Vector3 tempPos = new Vector3(0, 0, 0);
     Rigidbody2D rb;
 

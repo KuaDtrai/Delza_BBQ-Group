@@ -16,6 +16,8 @@ public class SkeletonDamage : MonoBehaviour
 
     Rigidbody2D rb;
 
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +25,7 @@ public class SkeletonDamage : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (player != null)
         {
@@ -57,6 +59,7 @@ public class SkeletonDamage : MonoBehaviour
     public void Chase()
     {
         transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+        animator.SetBool("isChasing", true);
         if (transform.position.x < player.position.x)
         {
             transform.localScale = new Vector3(3, 3, 3);
@@ -69,6 +72,7 @@ public class SkeletonDamage : MonoBehaviour
 
     public void StopChase()
     {
+        animator.SetBool("isChasing", false);
         transform.position = Vector2.MoveTowards(transform.position, player.position, 0);
     }
 }
