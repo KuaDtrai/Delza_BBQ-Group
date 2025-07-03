@@ -9,22 +9,28 @@ public class DarkWolfAI : MonoBehaviour
     public enum AIState { Idle, Patrol, Chase, Attack, Damage, Death }
     private AIState currentState = AIState.Idle;
 
+    [Header("Speeds & Ranges")]
     public float patrolSpeed = 2f;
     public float chaseSpeed = 4f;
     public float attackRange = 1f;
     public float chaseRange = 5f;
 
-    private Vector2 patrolPoint;
-    public Transform player;
+    [Header("Patrol Settings")]
+    public float patrolRadius = 5f;      // how far from home you’ll roam
+    public float waitAtPoint = 1f;       // idle time at each patrol point
 
+    private Vector2 homePosition;
+    private Vector2 patrolPoint;
+    private float pointReachedTime;
+
+    [Header("Health")]
     public int maxHealth = 100;
     private int currentHealth;
 
-    private float idleTime = 2f;
-    private float startTime;
+    [Header("References")]
+    public Transform player;
 
     private bool isAttacking = false;
-    private Vector2 lastMoveDir = Vector2.right;
 
     void Start()
     {
@@ -32,67 +38,64 @@ public class DarkWolfAI : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         currentHealth = maxHealth;
-        patrolPoint = new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f));
-        startTime = Time.time;
+        homePosition = transform.position;
+        ChooseNewPatrolPoint();
+        pointReachedTime = Time.time;
     }
 
     void Update()
     {
         switch (currentState)
         {
-            case AIState.Idle:
-                HandleIdle();
-                break;
-            case AIState.Patrol:
-                HandlePatrol();
-                break;
-            case AIState.Chase:
-                HandleChase();
-                break;
-            case AIState.Attack:
-                HandleAttack();
-                break;
-            case AIState.Damage:
-                HandleDamage();
-                break;
-            case AIState.Death:
-                HandleDeath();
-                break;
+            case AIState.Idle: HandleIdle(); break;
+            case AIState.Patrol: HandlePatrol(); break;
+            case AIState.Chase: HandleChase(); break;
+            case AIState.Attack: HandleAttack(); break;
+            case AIState.Damage: break;
+            case AIState.Death: HandleDeath(); break;
         }
     }
 
     void HandleIdle()
     {
         animator.SetBool("IsWalking", false);
-        animator.SetBool("IsRunning", false);
-        animator.SetBool("IsAttacking", false);
         rb.linearVelocity = Vector2.zero;
 
-        if (Time.time > startTime + idleTime)
+        // after waiting at point, go patrol again
+        if (Time.time > pointReachedTime + waitAtPoint)
         {
             currentState = AIState.Patrol;
-            startTime = Time.time;
+            ChooseNewPatrolPoint();
         }
     }
 
     void HandlePatrol()
     {
         animator.SetBool("IsWalking", true);
-        animator.SetBool("IsRunning", false);
-        animator.SetBool("IsAttacking", false);
 
         Vector2 direction = (patrolPoint - (Vector2)transform.position).normalized;
         rb.linearVelocity = direction * patrolSpeed;
+        spriteRenderer.flipX = direction.x > 0;
 
+        // if we arrive
         if (Vector2.Distance(transform.position, patrolPoint) < 0.1f)
         {
-            patrolPoint = new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f));
+            rb.linearVelocity = Vector2.zero;
+            pointReachedTime = Time.time;
+            currentState = AIState.Idle;
         }
-
-        if (Vector2.Distance(transform.position, player.position) < chaseRange)
+        // if player sneaks in range
+        else if (Vector2.Distance(transform.position, player.position) < chaseRange)
         {
             currentState = AIState.Chase;
         }
+    }
+
+    void ChooseNewPatrolPoint()
+    {
+        // pick a random point in a circle around homePosition
+        Vector2 rand = Random.insideUnitCircle * patrolRadius;
+        patrolPoint = homePosition + rand;
     }
 
     void HandleChase()
@@ -136,7 +139,7 @@ public class DarkWolfAI : MonoBehaviour
         {
             if (hit.transform == player)
             {
-                // player.GetComponent<PlayerHealth>()?.TakeDamage(10);
+                player.GetComponent<PlayerHealth>()?.TakeDamage(1);
             }
         }
     }
