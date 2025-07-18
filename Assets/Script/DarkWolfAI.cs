@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(Animator), typeof(SpriteRenderer))]
 public class DarkWolfAI : MonoBehaviour
 {
     private Rigidbody2D rb;
@@ -16,27 +17,27 @@ public class DarkWolfAI : MonoBehaviour
     public float chaseRange = 5f;
 
     [Header("Patrol Settings")]
-    public float patrolRadius = 5f;      // how far from home you’ll roam
-    public float waitAtPoint = 1f;       // idle time at each patrol point
-
-    private Vector2 homePosition;
-    private Vector2 patrolPoint;
-    private float pointReachedTime;
+    public float patrolRadius = 5f;
+    public float waitAtPoint = 1f;
 
     [Header("Health")]
     public int maxHealth = 100;
-    private int currentHealth;
 
     [Header("References")]
     public Transform player;
 
-    private bool isAttacking = false;
+    private int currentHealth;
+    private Vector2 homePosition;
+    private Vector2 patrolPoint;
+    private float pointReachedTime;
+    private bool isAttacking;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
         currentHealth = maxHealth;
         homePosition = transform.position;
         ChooseNewPatrolPoint();
@@ -45,116 +46,79 @@ public class DarkWolfAI : MonoBehaviour
 
     void Update()
     {
+        if (player == null) return;
+
         switch (currentState)
         {
             case AIState.Idle: HandleIdle(); break;
             case AIState.Patrol: HandlePatrol(); break;
             case AIState.Chase: HandleChase(); break;
             case AIState.Attack: HandleAttack(); break;
-            case AIState.Damage: break;
             case AIState.Death: HandleDeath(); break;
         }
     }
 
     void HandleIdle()
     {
+        StopMovement();
         animator.SetBool("IsWalking", false);
-        rb.linearVelocity = Vector2.zero;
 
-        // after waiting at point, go patrol again
         if (Time.time > pointReachedTime + waitAtPoint)
         {
-            currentState = AIState.Patrol;
             ChooseNewPatrolPoint();
+            currentState = AIState.Patrol;
         }
     }
 
     void HandlePatrol()
     {
-        animator.SetBool("IsWalking", true);
+        MoveTo(patrolPoint, patrolSpeed, walk: true);
 
-        Vector2 direction = (patrolPoint - (Vector2)transform.position).normalized;
-        rb.linearVelocity = direction * patrolSpeed;
-        spriteRenderer.flipX = direction.x > 0;
-
-        // if we arrive
         if (Vector2.Distance(transform.position, patrolPoint) < 0.1f)
         {
-            rb.linearVelocity = Vector2.zero;
+            StopMovement();
             pointReachedTime = Time.time;
             currentState = AIState.Idle;
         }
-        // if player sneaks in range
-        else if (Vector2.Distance(transform.position, player.position) < chaseRange)
+        else if (IsPlayerInRange(chaseRange))
         {
             currentState = AIState.Chase;
         }
     }
 
-    void ChooseNewPatrolPoint()
-    {
-        // pick a random point in a circle around homePosition
-        Vector2 rand = Random.insideUnitCircle * patrolRadius;
-        patrolPoint = homePosition + rand;
-    }
-
     void HandleChase()
     {
-        animator.SetBool("IsWalking", false);
-        animator.SetBool("IsRunning", true);
-        animator.SetBool("IsAttacking", false);
+        MoveTo(player.position, chaseSpeed, walk: false);
 
-        Vector2 direction = (player.position - transform.position).normalized;
-        rb.linearVelocity = direction * chaseSpeed;
-        FacePlayer();
-
-        float distance = Vector2.Distance(transform.position, player.position);
-
-        if (distance < attackRange)
-        {
-            currentState = AIState.Attack;
-        }
-        else if (distance > chaseRange)
-        {
-            currentState = AIState.Patrol;
-        }
+        float dist = Vector2.Distance(transform.position, player.position);
+        if (dist < attackRange) currentState = AIState.Attack;
+        else if (dist > chaseRange) currentState = AIState.Patrol;
     }
 
     void HandleAttack()
     {
         if (isAttacking) return;
 
+        StopMovement();
         isAttacking = true;
+
         animator.SetTrigger("Attack");
-        animator.SetBool("IsWalking", false);
-        animator.SetBool("IsRunning", false);
         animator.SetBool("IsAttacking", true);
-        rb.linearVelocity = Vector2.zero;
 
         FacePlayer();
-        Invoke(nameof(ResetAttack), 1f);
 
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, attackRange);
         foreach (var hit in hits)
-        {
             if (hit.transform == player)
-            {
-                player.GetComponent<PlayerHealth>()?.TakeDamage(1);
-            }
-        }
+                hit.GetComponent<PlayerHealth>()?.TakeDamage(1);
+
+        Invoke(nameof(ResetAttack), 1f);
     }
 
     void ResetAttack()
     {
         isAttacking = false;
-        if (Vector2.Distance(transform.position, player.position) < attackRange)
-        {
-            currentState = AIState.Attack;
-        }
-        else
-        {
-            currentState = AIState.Chase;
-        }
+        currentState = IsPlayerInRange(attackRange) ? AIState.Attack : AIState.Chase;
     }
 
     public void TakeDamage(int amount)
@@ -163,35 +127,48 @@ public class DarkWolfAI : MonoBehaviour
 
         currentHealth -= amount;
         animator.SetTrigger("Damage");
-        rb.linearVelocity = Vector2.zero;
+        StopMovement();
 
-        if (currentHealth <= 0)
-        {
-            currentState = AIState.Death;
-        }
-        else
-        {
-            currentState = AIState.Idle;
-        }
+        currentState = currentHealth <= 0 ? AIState.Death : AIState.Idle;
     }
-
-    void HandleDamage() { }
 
     void HandleDeath()
     {
         animator.SetBool("IsDead", true);
+        StopMovement();
+        enabled = false;
+    }
+
+    void ChooseNewPatrolPoint()
+    {
+        patrolPoint = homePosition + Random.insideUnitCircle * patrolRadius;
+    }
+
+    void MoveTo(Vector2 target, float speed, bool walk)
+    {
+        Vector2 dir = (target - (Vector2)transform.position).normalized;
+        Vector2 next = (Vector2)transform.position + dir * speed * Time.deltaTime;
+        rb.MovePosition(next);
+
+        animator.SetBool("IsWalking", walk);
+        animator.SetBool("IsRunning", !walk);
+        spriteRenderer.flipX = dir.x > 0;
+    }
+
+    void StopMovement()
+    {
         rb.linearVelocity = Vector2.zero;
-        this.enabled = false;
+    }
+
+    bool IsPlayerInRange(float range)
+    {
+        return Vector2.Distance(transform.position, player.position) < range;
     }
 
     void FacePlayer()
     {
-        if (player != null)
-        {
-            float xDir = player.position.x - transform.position.x;
-            if (xDir != 0)
-                spriteRenderer.flipX = xDir > 0;
-        }
+        float dx = player.position.x - transform.position.x;
+        if (dx != 0) spriteRenderer.flipX = dx > 0;
     }
 
     void OnDrawGizmosSelected()
