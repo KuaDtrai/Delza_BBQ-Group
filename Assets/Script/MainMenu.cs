@@ -15,6 +15,8 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
+    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,6 +24,8 @@ public class MainMenu : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
+
+    
 
     // Update is called once per frame
     void Update()

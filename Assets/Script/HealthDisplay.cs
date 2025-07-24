@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HealthDisplay : MonoBehaviour
 {
@@ -42,6 +43,10 @@ public class HealthDisplay : MonoBehaviour
             {
                 snails[i].enabled = false;
             }
+        }
+        if (health == 0)
+        {
+            SceneManager.LoadSceneAsync("Village");
         }
     }
 }
